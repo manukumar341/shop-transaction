@@ -6,10 +6,9 @@ import styled from "styled-components";
 // export default Sortby ;
 // export default filterby;
 
-export const Div=styled.div`
-background-color:white;
-border:none;
-border-radius:2px;
-padding-right:50px;
-margin:20px;
-`
+export const Div = styled.span`
+  background-color: white;
+  border: none;
+  border-radius: 2px;
+  padding-right: 50px;
+`;

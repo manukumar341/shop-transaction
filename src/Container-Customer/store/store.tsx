@@ -1,16 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import reducer from './api-reducer'
+import { configureStore } from "@reduxjs/toolkit";
+import reducer from "./api-reducer";
+import customRedu from "./custom-reducer";
 
 const store = configureStore({
   reducer: {
-    customer:reducer
-  }
-})
+    customer: reducer,
+    customState: customRedu,
+  },
+});
 
-console.log(store.getState());
-
-export default store
-export type RootState=ReturnType<typeof store.getState>
-export type AppDispatch=typeof store.dispatch
-
-
+export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

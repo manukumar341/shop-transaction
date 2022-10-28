@@ -1,15 +1,19 @@
+import React, { useState } from "react";
 import styled from "styled-components";
+import Search from "../lookup-component/search";
 import { IinitialState, Iprop } from "../types";
 interface IstyleProp {
   total: number | string;
 }
 
 interface ICustomers {
-  arrCustomOverview: Array<IinitialState>;
+  arrCustomOverview: Array<Iprop>;
   handleOnclickCustomer(id: string): void;
 }
-
+export const searchContext = React.createContext<string>("");
 export const Customers = (props: ICustomers) => {
+  const [text, setText] = useState("");
+
   const { arrCustomOverview, handleOnclickCustomer } = props;
 
   return (
@@ -26,7 +30,7 @@ export const Customers = (props: ICustomers) => {
             onClick={() => handleOnclickCustomer(element.name)}
           >
             <b>{element.name}</b>
-            {/* <Amount total={element.total}>{element.total}</Amount> */}
+            <Amount total={element.total}>{element.total}</Amount>
           </CustomerInfo>
         ))}
       </Container>
@@ -45,7 +49,7 @@ const Container = styled.div`
   width: 500px;
   height: 600px;
   border: solid 1px red;
-  margin: 10px;
+  margin: 10px 50px;
   position: absolute;
   display: inline-block;
 `;
