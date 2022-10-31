@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { context } from "../customer-container";
-import { useAppDispatch } from "../store/hook";
-import { setLookupValue } from "../store/lookup-slice";
-import { IhandlerFunc } from "../types";
-import { Div } from "./export-component";
+import { context } from "../../customer-container";
+import { useAppDispatch } from "../../store/hook";
+import { setLookupValue } from "../../store/lookup-slice";
+import { IhandlerFunc } from "../../types";
+import { Div } from "./style";
 function Sortby(): JSX.Element {
   const dispatch = useAppDispatch();
   const handleSort = (e: EventTarget & HTMLSelectElement) => {

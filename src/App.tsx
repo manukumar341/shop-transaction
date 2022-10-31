@@ -1,10 +1,10 @@
 import { Provider } from "react-redux";
-import { CustomerContainer } from "./Container-Customer/customer-container";
-import store from "./Container-Customer/store/store";
+import { CustomerContainer } from "./container-customer/customer-container";
+import store from "./container-customer/store/store";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Provider store={store}>
         <CustomerContainer />
       </Provider>

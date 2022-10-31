@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   searchValue: "",
-  filterValue: "",
-  sortValue: "",
+  filterValue: "All",
+  sortValue: "By Name",
 };
 
 const lookupSlice = createSlice({
@@ -13,23 +13,13 @@ const lookupSlice = createSlice({
     setLookupValue(state, action) {
       const actions = action.payload;
       if (actions.type === "sort") {
-        const states = { ...state, sortValue: actions.payload };
-        state = states;
+        state.sortValue = actions.payload;
       }
       if (actions.type === "filter") {
-        const states = {
-          ...state,
-          filterValue: actions.payload,
-        };
-        state = states;
-        console.log(state);
+        state.filterValue = actions.payload;
       }
       if (actions.type === "search") {
-        const states = {
-          ...state,
-          searchValue: actions.payload,
-        };
-        state = states;
+        state.searchValue = actions.payload;
       }
     },
   },

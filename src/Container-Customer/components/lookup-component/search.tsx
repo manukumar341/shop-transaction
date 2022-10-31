@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { context } from "../customer-container";
-import { IhandlerFunc } from "../types";
-import { Div } from "./export-component";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { setLookupValue } from "../store/lookup-slice";
+import { context } from "../../customer-container";
+import { IhandlerFunc } from "../../types";
+import { Div } from "./style";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { setLookupValue } from "../../store/lookup-slice";
 
 function Search(): JSX.Element {
   const dispatch = useAppDispatch();
