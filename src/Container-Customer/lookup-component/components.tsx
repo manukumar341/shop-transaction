@@ -19,4 +19,5 @@ const Div = styled.div`
   background-color: lightblue;
   align-items: center;
   justify-content: center;
+  margin-left: 70px;
 `;

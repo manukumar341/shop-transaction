@@ -7,7 +7,7 @@ interface Istyleprop {
   types: string;
 }
 
-function Customer() {
+function Customer({ val }: { val?: string }) {
   const obj = useAppSelector((state) => state.customState);
   console.log(obj);
   const info = () => {
@@ -32,11 +32,17 @@ function Customer() {
 
   return (
     <Div>
+      <TitleDiv>
+        <b>Name</b>
+        <AmountTitle>Total</AmountTitle>
+      </TitleDiv>
+      {!obj.name && <NotSel>Customer not selected</NotSel>}
       <h1>{obj?.name}</h1>
-      <b>ENTRIES </b>
-      <AmountTitle>YOU GOT </AmountTitle>
-      <AmountTitle>YOU GAVE</AmountTitle>
-
+      <TitleDiv>
+        <b>ENTRIES </b>
+        <AmountTitle>YOU GOT </AmountTitle>
+        <AmountTitle>YOU GAVE</AmountTitle>
+      </TitleDiv>
       {info()}
     </Div>
   );
@@ -44,10 +50,23 @@ function Customer() {
 
 export default Customer;
 
+const NotSel = styled.b`
+  justify-content: center;
+  align-text: center;
+  text-align: center;
+`;
+const TitleDiv = styled.div`
+  border: solid 2px black;
+  margin: 1px;
+  padding: 10px 10px;
+  border-radius: 15px;
+  color: black;
+  background-color: lightgray;
+`;
+
 const Entrie = styled.div`
   padding: 15px 1px;
   margin: 5px;
-  background-color: lightgray;
 `;
 
 const AmountTitle = styled.b`
@@ -58,11 +77,9 @@ const AmountTitle = styled.b`
 const Div = styled.div`
   width: 500px;
   height: 600px;
-  border: solid 1px black;
   justify-content: center;
   align-item: center;
-  display: flex-box;
-  margin: 10px 50px;
+  margin: 10px 400px;
   float: right;
 `;
 

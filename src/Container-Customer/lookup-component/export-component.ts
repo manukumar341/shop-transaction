@@ -11,4 +11,5 @@ export const Div = styled.span`
   border: none;
   border-radius: 2px;
   padding-right: 50px;
+  margin: 0px -20px;
 `;

@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { context } from "../customer-container";
+import { useAppDispatch } from "../store/hook";
+import { setLookupValue } from "../store/lookup-slice";
 import { IhandlerFunc } from "../types";
 import { Div } from "./export-component";
 function Sortby(): JSX.Element {
-  // const {handleSort}=React.useContext(context) as IhandlerFunc
-  // const obj=useContext(context)  <select id="sort" onChange={e=>obj?.handleSort(e.target)}>
-  const { handleSort } = useContext(context) as IhandlerFunc;
+  const dispatch = useAppDispatch();
+  const handleSort = (e: EventTarget & HTMLSelectElement) => {
+    dispatch(setLookupValue({ type: "sort", payload: e.value }));
+  };
 
   return (
     <Div>

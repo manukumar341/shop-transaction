@@ -38,7 +38,5 @@ export interface Ifetch {
 // }
 
 export interface IhandlerFunc {
-  handleSearch: (event: EventTarget & HTMLInputElement) => void;
-  handleFilter: (event: EventTarget & HTMLSelectElement) => void;
-  handleSort: (event: EventTarget & HTMLSelectElement) => void;
+  handleOnclickCustomer: (id: string) => void;
 }

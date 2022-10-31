@@ -1,76 +1,80 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
-import Search from "../lookup-component/search";
-import { IinitialState, Iprop } from "../types";
+import { context } from "../customer-container";
+import { customOverview } from "../logic";
+import { useAppSelector } from "../store/hook";
+import { IhandlerFunc, Iprop } from "../types";
+import CustomersInfo from "./customers-info";
 interface IstyleProp {
   total: number | string;
 }
 
-interface ICustomers {
-  arrCustomOverview: Array<Iprop>;
+export interface ICustomers {
+  // arrCustomOverview: Array<Iprop>;
   handleOnclickCustomer(id: string): void;
 }
-export const searchContext = React.createContext<string>("");
-export const Customers = (props: ICustomers) => {
-  const [text, setText] = useState("");
 
-  const { arrCustomOverview, handleOnclickCustomer } = props;
+export const Customers = (props: ICustomers) => {
+  const { handleOnclickCustomer } = props;
+  const store = useAppSelector((state) => state);
+  const { data } = store.customer;
+  const { searchValue } = useAppSelector((state) => state.lookups);
+  const arr = data,
+    value = searchValue;
+  console.log(searchValue);
+
+  const arrCustomOverview = customOverview(arr, searchValue);
+
+  let give = 0,
+    got = 0;
+  arrCustomOverview.map((element) => {
+    const total = element.total;
+    if (total > 0) {
+      got += total;
+    } else {
+      give += total;
+    }
+  });
 
   return (
     <>
       <Container>
-        <Title>
+        <div>
+          <b>total give : {give} </b>
+          <b>total got : {got}</b>
+          <b>net total : {got - -give}</b>
+        </div>
+        <TitleDiv>
           <b>Name</b>
           <Amount total={""}>Total</Amount>
-        </Title>
-        {arrCustomOverview.map((element, index) => (
-          <CustomerInfo
-            key={index}
-            id={element.name}
-            onClick={() => handleOnclickCustomer(element.name)}
-          >
-            <b>{element.name}</b>
-            <Amount total={element.total}>{element.total}</Amount>
-          </CustomerInfo>
-        ))}
+        </TitleDiv>
+        <CustomersInfo
+          arr={arrCustomOverview}
+          handleOnclickCustomer={handleOnclickCustomer}
+        />
       </Container>
     </>
   );
 };
 
-const Title = styled.div`
-  border: none;
+const TitleDiv = styled.div`
+  border: solid 2px black;
   margin: 1px;
   padding: 10px 10px;
-  color: gray;
+  border-radius: 15px;
+  color: black;
+  background-color: lightgray;
 `;
 
 const Container = styled.div`
   width: 500px;
   height: 600px;
-  border: solid 1px red;
   margin: 10px 50px;
   position: absolute;
-  display: inline-block;
-`;
-
-const CustomerInfo = styled.div`
-  background-color: white;
-  border: none;
-  margin: 1px;
-  padding: 20px 10px;
-  &:hover {
-    margin: 3px;
-    background-color: lightgray;
-  }
 `;
 
 const Amount = styled.b<IstyleProp>`
   float: right;
   color: ${(props) =>
-    props.total > 0 ? "green" : props.total < 0 ? "red" : "gray"};
-`;
-const Name = styled.h2`
-  float: left;
-  text-aline: left;
+    props.total > 0 ? "green" : props.total < 0 ? "red" : "black"};
 `;
