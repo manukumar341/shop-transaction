@@ -1,5 +1,6 @@
-import React from "react";
-import { useAppSelector } from "../../store/hook";
+import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import AddNewEntry from "./add-new-entry";
 import {
   TitleDiv,
   AmountTitle,
@@ -17,7 +18,9 @@ interface Istyleprop {
 
 function Customer() {
   const obj = useAppSelector((state) => state.customState);
-  console.log(obj);
+  const dispatch = useAppDispatch();
+const [newEntry,setNewEntry]=useState(false)
+let  amount: number = 0,date: string = "";
   const info = () => {
     const arr = obj.transactions.map((element) => {
       console.log("element");
@@ -54,8 +57,9 @@ function Customer() {
       {info()}
       {obj.name && (
         <>
-          <GotGiveBtn btn="got">You Got</GotGiveBtn>
-          <GotGiveBtn btn="give">You Give</GotGiveBtn>
+        <AddNewEntry amount={amount} date={date}/>
+          <GotGiveBtn btn="got" name='YouGot'>You Got</GotGiveBtn>
+          <GotGiveBtn btn="give" name='YouGive'>You Give</GotGiveBtn>
         </>
       )}
     </Div>

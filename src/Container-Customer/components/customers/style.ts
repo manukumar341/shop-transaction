@@ -9,10 +9,10 @@ export const AddBtn = styled.button`
   &:hover {
     background-color: lightblue;
   }
-  position: sticky;
+  position: absolute;
   width: 50%;
   bottom: 30px;
-  margin-left: 25%;
+  margin-left: 0%;
 `;
 
 export const TotalDiv = styled.div`

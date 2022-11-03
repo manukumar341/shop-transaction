@@ -18,8 +18,8 @@ function Sortby(): JSX.Element {
         <option value="Sort by" selected>
           By Name
         </option>
-        <option value="high-low">Highest Amount</option>
-        <option value="low-high">Least Amount</option>
+        <option value="high-low">high-low</option>
+        <option value="low-high">low-high</option>
       </Select>
     </Div>
   );

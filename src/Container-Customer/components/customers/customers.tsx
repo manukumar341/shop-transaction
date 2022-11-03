@@ -16,11 +16,12 @@ import React from "react";
 
 export interface ICustomers {
   // arrCustomOverview: Array<Iprop>;
+  handleNewCustomer(): void;
   handleOnclickCustomer(id: string): void;
 }
 
 const Customers = (props: ICustomers) => {
-  const { handleOnclickCustomer } = props;
+  const { handleOnclickCustomer, handleNewCustomer } = props;
   const store = useAppSelector((state) => state);
   const { searchValue, filterValue, sortValue } = store.lookups;
   const { data, error, loading } = store.customer;
@@ -75,6 +76,9 @@ const Customers = (props: ICustomers) => {
               />
             </svg>{" "}
           </b>
+          <AddBtn onClick={handleNewCustomer}>
+            <b> + Add Customer</b>
+          </AddBtn>
           <TotalGot>
             You'll Get: ₹ {got}
             <svg
@@ -106,9 +110,6 @@ const Customers = (props: ICustomers) => {
             handleOnclickCustomer={handleOnclickCustomer}
           />
         )}
-        <AddBtn>
-          <b> + Add Customer</b>
-        </AddBtn>
       </Container>
     </>
   );

@@ -37,7 +37,13 @@ const customerReducer = createSlice({
         (state.error = action.error.message || "Something went wrong");
     });
   },
-  reducers: {},
+  reducers: {
+    addCustomer(state, action) {
+      console.log(action.payload);
+      state.data.push(action.payload);
+    },
+  },
 });
 
 export default customerReducer.reducer;
+export const { addCustomer } = customerReducer.actions;
