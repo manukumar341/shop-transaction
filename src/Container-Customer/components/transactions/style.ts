@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IstyleProp {
-  btn: "got" | "give";
+  btn?: "got" | "give";
 }
 
 export const GotGiveBtn = styled.button<IstyleProp>`
@@ -16,7 +16,6 @@ export const GotGiveBtn = styled.button<IstyleProp>`
   &:hover {
     background-color: ${(props) => (props.btn === "got" ? "green" : "red")};
   }
-  position: sticky;
   width: 50%;
   bottom: 20px;
 `;

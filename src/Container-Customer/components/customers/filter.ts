@@ -32,27 +32,26 @@ export const customOverview = (props: Iprops): Array<Iprop> => {
   //   res = arrCustomOverview;
   // }
   res.length===0?res=arrCustomOverview:null;
+console.log(res);
   value ? (res = searchCustomer(res, value)) : null;
     filter ? (res = filterCustomer(res, filter)) : null;
     sort ? (res = sortCustomer([...res], sort)) : null;
   
-
   return res;
 };
 
 const searchCustomer = (array: Array<Iprop>, value: string) => {
-  
   const res: Array<Iprop> = [];
   array.map((val) => {
     if (val.name.toLocaleLowerCase().startsWith(value.toLocaleLowerCase())) {
       res.push(val);
     }
   });
-
   return [...res];
 };
 
 const filterCustomer = (array: Array<Iprop>, filterBy: string) => {
+
   let res: Array<Iprop> = [];
   array.map((val) => {
     if (filterBy === "You'll Get") {

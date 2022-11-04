@@ -1,14 +1,6 @@
-import { Iprop } from "../../types";
 import { Div, Amount } from "./style";
+import { ICustomersInfo } from "./type";
 
-interface ICustomersInfo {
-  arr: Array<Iprop>;
-  handleOnclickCustomer(id: string): void;
-}
-
-interface IstyleProp {
-  total: number | string;
-}
 function CustomersInfo(props: ICustomersInfo) {
   const { arr, handleOnclickCustomer } = props;
   return (

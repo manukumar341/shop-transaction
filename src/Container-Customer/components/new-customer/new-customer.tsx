@@ -1,9 +1,11 @@
 import React, { ChangeEventHandler,useRef } from "react";
-import { addCustomer } from "../../store/api-slice";
+import { addCustomer } from "../../store/customers-api-slice";
 import { useAppDispatch } from "../../store/hook";
+import { showAddCustomerComp } from "../../store/flyout-slices";
 import { Div, GotGiveBtn } from "./style";
-function NewCustomer({ handleNewCustomer }: { handleNewCustomer: () => void }) {
-  const first = useRef(null)
+function NewCustomer() {
+  const first = useRef(focus)
+  console.log(first)
   const dispatch = useAppDispatch();
   let name: string = "",
     amount: number = 0,
@@ -18,9 +20,9 @@ function NewCustomer({ handleNewCustomer }: { handleNewCustomer: () => void }) {
   const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     date = e.target.value;
   };
-  const handleGot = () => {
-    handleNewCustomer();
-
+  const handleGiveGotBtn = (e: React.MouseEvent<HTMLElement>) => {
+    const type=(e.target as HTMLInputElement).value;
+    dispatch(showAddCustomerComp())
     dispatch(
       addCustomer({
         name: name,
@@ -29,23 +31,7 @@ function NewCustomer({ handleNewCustomer }: { handleNewCustomer: () => void }) {
           {
             amount: amount,
             date: date,
-            type: "got",
-          },
-        ],
-      })
-    );
-  };
-  const handleGive = () => {
-    handleNewCustomer();
-    dispatch(
-      addCustomer({
-        name: name,
-        id: Date.now().toString(),
-        transactions: [
-          {
-            amount: amount,
-            date: date,
-            type: "got",
+            type: type,
           },
         ],
       })
@@ -67,10 +53,10 @@ function NewCustomer({ handleNewCustomer }: { handleNewCustomer: () => void }) {
       <h4>Date</h4>
       <input type="date" onChange={handleDate} />
       <div>
-        <GotGiveBtn btn="got" value="got" onClick={handleGot}>
+        <GotGiveBtn btn="got" value="got" name='got' onClick={handleGiveGotBtn}>
           You Got
         </GotGiveBtn>
-        <GotGiveBtn btn="give" value="give" onClick={handleGive}>
+        <GotGiveBtn btn="give" value="give" name='give' onClick={handleGiveGotBtn}>
           You Give
         </GotGiveBtn>
       </div>

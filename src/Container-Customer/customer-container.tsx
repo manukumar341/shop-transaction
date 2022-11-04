@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { IhandlerFunc, IinitialState } from "./types";
 import { useAppDispatch, useAppSelector } from "./store/hook";
-import { fetchUsers } from "./store/api-slice";
-import { setId } from "./store/custom-slice";
+import { fetchUsers } from "./store/customers-api-slice";
+import { setId } from "./store/transaction-slice";
 import Customers from "./components/customers/customers";
 import Customer from "./components/transactions/customer";
 import styled from "styled-components";
 import NewCustomer from "./components/new-customer/new-customer";
+import Flyout from "./components/flyout";
+import { showAddCustomerComp } from "./store/flyout-slices";
 
 export const context = React.createContext<IhandlerFunc | null>(null);
 
 export const CustomerContainer = () => {
-  const [newCustomer, setNewCustomer] = useState(false);
   const store = useAppSelector((state) => state);
   const { data } = store.customer;
-
+  const { addCustomer } = store.flyout;
   const dispatch = useAppDispatch();
   const handleOnclickCustomer = (id: string) => {
-    newCustomer && handleNewCustomer();
+    addCustomer && handleNewCustomer();
     data.map((elem) => {
       if (elem.name === id) {
         dispatch(setId(elem));
@@ -30,7 +31,7 @@ export const CustomerContainer = () => {
   }, []);
 
   const handleNewCustomer = () => {
-    setNewCustomer(!newCustomer);
+    dispatch(showAddCustomerComp())
   };
 
   return (
@@ -39,17 +40,13 @@ export const CustomerContainer = () => {
         handleOnclickCustomer={handleOnclickCustomer}
         handleNewCustomer={handleNewCustomer}
       />
-      {newCustomer ? (
-        <NewCustomer handleNewCustomer={handleNewCustomer} />
-      ) : (
-        <Customer />
-      )}
+      <Customer />
     </Div>
   );
 };
 
 const Div = styled.div`
-  display: flex-box;
+  display: block;
 `;
 const AddBtn = styled.button`
   padding: 10px;

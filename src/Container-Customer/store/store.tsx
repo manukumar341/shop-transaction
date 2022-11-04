@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducer from "./api-slice";
-import customRedu from "./custom-slice";
+import reducer from "./customers-api-slice";
+import customRedu from "./transaction-slice";
 import lookupReducer from "./lookup-slice";
+import flyoutReducer from './flyout-slices';
 
 const store = configureStore({
   reducer: {
     customer: reducer,
-    customState: customRedu,
+    transactions: customRedu,
     lookups: lookupReducer,
+    flyout: flyoutReducer,
   },
 });
 

@@ -1,13 +1,12 @@
-import { Provider } from "react-redux";
-import { CustomerContainer } from "./container-customer/customer-container";
-import store from "./container-customer/store/store";
+import CustomerApp from "./container-customer";
+
 
 function App() {
   return (
     <div>
-      <Provider store={store}>
-        <CustomerContainer />
-      </Provider>
+    <pre>       <b>home </b>          <b>customer</b>          <b>product</b></pre>
+    <hr></hr>
+    <CustomerApp/>
     </div>
   );
 }

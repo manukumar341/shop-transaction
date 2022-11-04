@@ -39,11 +39,19 @@ const customerReducer = createSlice({
   },
   reducers: {
     addCustomer(state, action) {
-      console.log(action.payload);
       state.data.push(action.payload);
     },
+    addTransaction(state, action) {
+      const payload = action.payload
+
+      state.data.map((obj, index) => {
+        if (obj.name === payload.name) {
+          state.data[index].transactions.push(payload.transaction)
+        }
+      })
+    }
   },
 });
 
 export default customerReducer.reducer;
-export const { addCustomer } = customerReducer.actions;
+export const { addCustomer, addTransaction } = customerReducer.actions;

@@ -7,7 +7,7 @@ export const Div = styled.div`
   height: 650px;
   justify-content: center;
   align-item: center;
-  margin: 10px 150px;
+  margin: 0px 0px;
   float: right;
 `;
 export const GotGiveBtn = styled.button<IstyleProp>`
