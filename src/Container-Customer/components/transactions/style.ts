@@ -53,6 +53,29 @@ export const Div = styled.div`
   float: right;
 `;
 
+export const FlyoutDiv = styled.div`
+height:100px;
+width:100px;
+background:#fff;
+position: absolute;
+right:0;
+background-color:white;
+z-index:10;
+animation:flyout 1s;
+@keyframes flyout {
+    0% {
+      opacity: 0%;
+      transform: translateX(400px);
+    }
+
+    100% {
+      opacity: 100%;
+      transform: translate(0);
+    }
+  
+ }
+ `
+
 export const Got = styled.b`
   color: green;
   float: right;

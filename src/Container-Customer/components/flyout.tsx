@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useAppSelector } from '../store/hook'
-import NewCustomer from './new-customer/new-customer'
+import NewCustomer from './customers/new-customer/new-customer'
 import AddNewEntry from './transactions/add-new-entry'
 function Flyout() {
     const store = useAppSelector(state => state);
@@ -10,15 +10,16 @@ function Flyout() {
     const saveTransactionToggle = (store.flyout.saveTransaction) ? true : false;
 
     return (
-        <Div>
-            {!saveTransactionToggle && <FlyoutDiv isFloat={addCustomerToggle}>
-                {addCustomerToggle && <NewCustomer />}
-            </FlyoutDiv>}
-            {!addCustomerToggle && <FlyoutDiv isFloat={saveTransactionToggle}>
+        // <Div>
+        //     {!saveTransactionToggle && <FlyoutDiv isFloat={addCustomerToggle}>
+        //         {addCustomerToggle && <NewCustomer />}
+        //     </FlyoutDiv>}
+        //     {!addCustomerToggle && <FlyoutDiv isFloat={saveTransactionToggle}>
 
-                {saveTransactionToggle && <AddNewEntry />}
-            </FlyoutDiv>}
-        </Div>
+        //         {saveTransactionToggle && <AddNewEntry />}
+        //     </FlyoutDiv>}
+        // </Div>
+        <></>
     )
 }
 
@@ -41,7 +42,6 @@ background:#fff;
 position: absolute;
 right:0;
 background-color:white;
-border: 3px solid green;
 z-index:10;
 animation:flyout 1s;
 @keyframes flyout {

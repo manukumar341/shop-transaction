@@ -15,12 +15,11 @@ const flyoutSlice = createSlice({
     initialState,
     reducers: {
         addCustomer(state) {
-            let addCustomer = state.addCustomer;
-            state.addCustomer = !addCustomer;
-            console.log(addCustomer)
+            state.addCustomer = !state.addCustomer;
+            console.log(state.addCustomer);
+
         },
         saveTransaction(state, action) {
-            console.log(action)
             state.saveTransaction = action.payload.type
         }
     }

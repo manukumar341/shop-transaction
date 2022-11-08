@@ -1,7 +1,7 @@
-import React, { ChangeEventHandler,useRef } from "react";
-import { addCustomer } from "../../store/customers-api-slice";
-import { useAppDispatch } from "../../store/hook";
-import { showAddCustomerComp } from "../../store/flyout-slices";
+import React, { ChangeEventHandler, useRef } from "react";
+import { addCustomer } from "../../../store/customers-api-slice";
+import { useAppDispatch } from "../../../store/hook";
+import { showAddCustomerComp } from "../../../store/flyout-slices";
 import { Div, GotGiveBtn } from "./style";
 function NewCustomer() {
   const first = useRef(focus)
@@ -21,7 +21,7 @@ function NewCustomer() {
     date = e.target.value;
   };
   const handleGiveGotBtn = (e: React.MouseEvent<HTMLElement>) => {
-    const type=(e.target as HTMLInputElement).value;
+    const type = (e.target as HTMLInputElement).value;
     dispatch(showAddCustomerComp())
     dispatch(
       addCustomer({

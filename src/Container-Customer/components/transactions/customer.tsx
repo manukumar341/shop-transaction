@@ -28,7 +28,6 @@ function Customer() {
 
   return (
     <Div>
-      <Flyout />
       <TitleDiv>
         <b>Name</b>
         <AmountTitle>Total</AmountTitle>

@@ -1,7 +1,7 @@
 import React from "react";
 import { addTransaction } from "../../store/customers-api-slice";
 import styled from "styled-components";
-import { GotGiveBtn } from "./style";
+import { FlyoutDiv, GotGiveBtn } from "./style";
 import { useAppDispatch, useAppSelector } from '../../store/hook'
 import { showAddCustomerComp, showSaveTransactionComp } from "../../store/flyout-slices";
 
@@ -23,14 +23,14 @@ function AddNewEntry() {
     date = e.target.value;
   };
   return (
-    <>
+    <FlyoutDiv>
       <h1>{name}</h1>
       <label>Customer Name</label>
       <input type="number" onChange={handleAmount} />
       <label>Date</label>
       <input type='date' onChange={handleDate} />
       <GotGiveBtn value='save' onClick={handleSaveBtn}>Save</GotGiveBtn>
-    </>
+    </FlyoutDiv>
   );
 }
 

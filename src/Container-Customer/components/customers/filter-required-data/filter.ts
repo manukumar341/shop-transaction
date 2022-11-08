@@ -1,4 +1,4 @@
-import { Itransaction, IinitialState, Iprop } from "../../types";
+import { Itransaction, IinitialState, Iprop } from "../../../types";
 
 const total = (arr: Array<Itransaction>) => {
   let got = 0,

@@ -6,19 +6,18 @@ import { setId } from "./store/transaction-slice";
 import Customers from "./components/customers/customers";
 import Customer from "./components/transactions/customer";
 import styled from "styled-components";
-import NewCustomer from "./components/new-customer/new-customer";
-import Flyout from "./components/flyout";
-import { showAddCustomerComp } from "./store/flyout-slices";
+import NewCustomer from "./components/customers/new-customer/new-customer";
+import { showAddCustomerComp, showAddCustomerComp } from "./store/flyout-slices";
 
 export const context = React.createContext<IhandlerFunc | null>(null);
 
 export const CustomerContainer = () => {
   const store = useAppSelector((state) => state);
   const { data } = store.customer;
-  const { addCustomer } = store.flyout;
+  const { addCustomer, saveTransaction } = store.flyout;
   const dispatch = useAppDispatch();
   const handleOnclickCustomer = (id: string) => {
-    addCustomer && handleNewCustomer();
+    // addCustomer && handleNewCustomer();
     data.map((elem) => {
       if (elem.name === id) {
         dispatch(setId(elem));
@@ -30,17 +29,17 @@ export const CustomerContainer = () => {
     dispatch(fetchUsers());
   }, []);
 
-  const handleNewCustomer = () => {
-    dispatch(showAddCustomerComp())
-  };
+
 
   return (
     <Div>
       <Customers
         handleOnclickCustomer={handleOnclickCustomer}
-        handleNewCustomer={handleNewCustomer}
       />
       <Customer />
+      {addCustomer && <NewCustomer />}
+      {saveTransaction && <AddNewEntry />}
+
     </Div>
   );
 };
